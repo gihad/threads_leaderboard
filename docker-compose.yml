@@ -1,0 +1,16 @@
+# To run this, first build the docker image locally: docker build -t leaderboard_threads .
+# Then try: docker-compose up
+
+leaderboard_threads:
+  image: leaderboard_threads
+  ports:
+    - "8080:8080"
+  links:
+    - redis
+  environment:
+    - REDIS_HOSTNAME=redis
+    - REDIS_PORT=6379
+redis:
+  image: redis
+  ports:
+    - "6379:6379"
